@@ -41,10 +41,25 @@ class Airplane {
           + It should return a string with `name` and `age`. Example: "Mary, 50"
   */
   
- class Person {
-    
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+} 
+  eat(edible) {
+    if(this.stomach.length < 10) {
+      this.stomach.push(edible);
+    }
   }
-  
+  poop() {
+    return this.stomach = [];
+    }
+  toString() {
+    return `${this.name}, ${this.age}`;
+    }
+}
+
   /*
     TASK 2
       - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
@@ -58,11 +73,29 @@ class Airplane {
       - A car which runs out of `fuel` while driving can't drive any more distance:
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
-  
- class Car {
-    
+
+class Car {
+   constructor(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
   }
-  
+  fill(gallons) {
+    this.tank += gallons;
+      return this;
+  }
+  drive(distance) {
+    if(distance < (this.tank * this.milesPerGallon)) {
+      this.odometer += distance;
+      this.tank -= distance / this.milesPerGallon;
+  } else {
+      this.odometer += this.tank * this.milesPerGallon;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+      }
+  }
+}
   /*
     TASK 3
       - Write a Lambdasian class.
@@ -75,9 +108,17 @@ class Airplane {
           + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
           + {name} and {location} of course come from the instance's own properties.
   */
- class Lambdasian {
-    
-  }
+
+          class Lambdasian {
+            constructor(attrs) {
+              this.name = attrs.name;
+              this.age = attrs.age;
+              this.location = attrs.location;
+            }
+            speak() {
+              return `Hello my name is ${this.name}, I am from ${this.location}`;
+            }
+          }
   
   /*
     TASK 4
